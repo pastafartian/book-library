@@ -1,20 +1,19 @@
 import React from 'react';
 import { Table } from '@mantine/core';
-//import useStore from '../store/store';
+// eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
+import useStore from '/src/store/store.js';
 
 export default function BookList() {
-  //const rows = elements.map((element) => (
-  //  <tr key={element.name}>
-  //    <td>{element.position}</td>
-  //    <td>{element.name}</td>
-  //    <td>{element.symbol}</td>
-  //    <td>{element.mass}</td>
-  //  </tr>
-  //));
-  /*function BearCounter() {
-    const bears = useStore((state) => state.bears);
-    return <h1>{bears} around here...</h1>;
-  }*/
+  const books = useStore((state) => state.books);
+  const rows = books.map((book) => (
+    <tr key={book.title}>
+      <td>{book.title}</td>
+      <td>{book.author.first}</td>
+      <td>{book.author.last}</td>
+      <td>{book.publicationYear}</td>
+      <td>{book.pages}</td>
+    </tr>
+  ));
 
   return (
     <Table>
@@ -27,7 +26,7 @@ export default function BookList() {
           <th># of Pages</th>
         </tr>
       </thead>
-      <tbody>Hello</tbody>
+      <tbody>{rows}</tbody>
     </Table>
   );
 }
