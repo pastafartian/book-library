@@ -11,15 +11,43 @@ const useStore = create((set) => ({
     publicationYear: 1781,
   },
   {
-    title: "Critique of Pure Reason",
+    title: "The Silmarillion",
   author: {
-    first: "Immanuel",
-    last: "Kant",
+    first: "J.R.R.",
+    last: "Tolkien",
   },
-  pages: 500,
-  publicationYear: 1781,
-},
+  pages: 365,
+  publicationYear: 1977,
+  },
   ],
+  addBook:
+    () => set(
+      (state) => ({
+        books: [ ...state.books, {
+          title: state.input.title,
+          author: {
+          first: state.input.firstName,
+          last: state.input.lastName
+        },
+          pages: state.pagesInput,
+          publicationYear: state.publicationYearInput
+        }],
+        input: {
+          titleInput: "",
+          firstNameInput: "",
+          lastNameInput: "",
+          pagesInput: null,
+          publicationYearInput: null
+        },
+      })
+    ),
+  input: {
+    titleInput: "",
+    firstNameInput: "",
+    lastNameInput: "",
+    pagesInput: null,
+    publicationYearInput: null,
+  },
 }));
 
 export default useStore;
