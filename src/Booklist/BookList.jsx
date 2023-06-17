@@ -20,10 +20,11 @@ export default function BookList() {
     <Table>
       <thead>
         <tr>
-          <th>Element position</th>
-          <th>Element name</th>
-          <th>Symbol</th>
-          <th>Atomic mass</th>
+          <th>Title</th>
+          <th>Author First Name</th>
+          <th>Author Last Name</th>
+          <th>Year Published</th>
+          <th># of Pages</th>
         </tr>
       </thead>
       <tbody>Hello</tbody>
