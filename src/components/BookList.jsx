@@ -1,10 +1,10 @@
 import React from 'react';
 import { Table } from '@mantine/core';
 // eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
-import useStore from '/src/store/store.js';
+import bookStore from '/src/store/store.js';
 
 export default function BookList() {
-  const books = useStore((state) => state.books);
+  const books = bookStore((state) => state.books);
   const rows = books.map((book) => (
     <tr key={book.title}>
       <td>{book.title}</td>

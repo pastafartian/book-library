@@ -2,56 +2,62 @@ import React from 'react';
 import {
       Button,
       NumberInput,
-      TextInput } from '@mantine/core';
+      TextInput,
+      Space } from '@mantine/core';
+import { useForm } from '@mantine/form';
 // eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
-import useStore from '/src/store/store.js';
+import bookStore from '/src/store/store.js';
 
 export default function BookList() {
-  const [input, addBook, changeInput] = useStore(
-    (state) => [state.addBook, state.input, state.changeInput],
+  const addBook = bookStore(
+    (state) => state.addBook,
   );
-  //const input = useStore((state) => state.addBook);
-  //const rows = books.map((book) => (
-  //  <tr key={book.title}>
-  //    <td>{book.title}</td>
-  //    <td>{book.author.first}</td>
-  //    <td>{book.author.last}</td>
-  //    <td>{book.publicationYear}</td>
-  //    <td>{book.pages}</td>
-  //  </tr>
-  //));
+  const form = useForm({
+    initialValues: {
+      title: '',
+      authorFirstName: '',
+      authorLastName: '',
+      publicationYear: '',
+      pages: '',
+    },
+  });
 
   return (
-  <div>
+  <form onSubmit={form.onSubmit((values) => addBook(values))}>
     <TextInput
       placeholder="Book Title"
       label="Title"
       withAsterisk
+      {...form.getInputProps('title')}
     />
     <TextInput
       placeholder="First Name"
       label="Author First Name"
       withAsterisk
+      {...form.getInputProps('firstName')}
     /><TextInput
       placeholder="Last Name"
       label="Author Last Name"
       withAsterisk
+      {...form.getInputProps('lastName')}
     />
     <NumberInput
-      defaultValue={input.publicationYearInput}
       placeholder="Year"
       label="Publication Year"
       withAsterisk
+      {...form.getInputProps('publicationYear')}
+      defaultValue={2000}
     />
     <NumberInput
-      defaultValue={input.pagesInput}
       placeholder="Pages"
       label="Number of pages"
-      onChange={changeInput}
+      withAsterisk
+      {...form.getInputProps('pages')}
     />
-    <Button onClick={addBook}>
+    <Space h="lg" />
+    <Button type="submit">
       Submit
     </Button>
-  </div>
+  </form>
   );
 }

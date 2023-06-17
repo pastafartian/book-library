@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const useStore = create((set) => ({
+const bookStore = create((set) => ({
   books: [{
     title: "Critique of Pure Reason",
     author: {
@@ -18,19 +18,17 @@ const useStore = create((set) => ({
   },
   pages: 365,
   publicationYear: 1977,
-  },
-  ],
+  }],
   addBook:
-    () => set(
-      (state) => ({
+    (values) => set(state => ({
         books: [ ...state.books, {
-          title: state.input.title,
+          title: values.title,
           author: {
-          first: state.input.firstName,
-          last: state.input.lastName
-        },
-          pages: state.pagesInput,
-          publicationYear: state.publicationYearInput
+          first: values.firstName,
+          last: values.lastName
+          },
+          pages: values.pages,
+          publicationYear: values.publicationYear,
         }],
         input: {
           titleInput: "",
@@ -39,8 +37,7 @@ const useStore = create((set) => ({
           pagesInput: null,
           publicationYearInput: null
         },
-      })
-    ),
+      })),
   input: {
     titleInput: "",
     firstNameInput: "",
@@ -50,4 +47,4 @@ const useStore = create((set) => ({
   },
 }));
 
-export default useStore;
+export default bookStore;
