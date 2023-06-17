@@ -38,13 +38,16 @@ const bookStore = create((set) => ({
           publicationYearInput: null
         },
       })),
-  input: {
-    titleInput: "",
-    firstNameInput: "",
-    lastNameInput: "",
-    pagesInput: null,
-    publicationYearInput: null,
-  },
+  removeEntry: (filteredArr) => set(() => ({
+    books: filteredArr,
+  }))
+  //input: {
+  //  titleInput: "",
+  //  firstNameInput: "",
+  //  lastNameInput: "",
+  //  pagesInput: null,
+  //  publicationYearInput: null,
+  //},
 }));
 
 export default bookStore;
