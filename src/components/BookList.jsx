@@ -2,9 +2,9 @@ import React from 'react';
 import { Table } from '@mantine/core';
 import { Trash } from 'tabler-icons-react';
 // eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
-import bookStore from '/src/store/store.js';
+import { bookStore } from '/src/store/store.js';
 
-export default function BookList() {
+export function BookList() {
   //create variables from store
   const [books, removeEntry] = bookStore((state) => [state.books, state.removeEntry]);
 

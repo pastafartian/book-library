@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const bookStore = create((set) => ({
+export const bookStore = create((set) => ({
   //array of book objects
   books: [{
     title: "Critique of Pure Reason",
@@ -53,4 +53,3 @@ const bookStore = create((set) => ({
   //},
 }));
 
-export default bookStore;
