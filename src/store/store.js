@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
-const bookStore = create((set) => ({
+export const bookStore = create((set) => ({
+  //array of book objects
   books: [{
     title: "Critique of Pure Reason",
     author: {
@@ -19,6 +20,7 @@ const bookStore = create((set) => ({
   pages: 365,
   publicationYear: 1977,
   }],
+  //method to add a book to the array of book objects in state
   addBook:
     (values) => set(state => ({
         books: [ ...state.books, {
@@ -38,6 +40,7 @@ const bookStore = create((set) => ({
           publicationYearInput: null
         },
       })),
+  //method to replace book array with filtered array
   removeEntry: (filteredArr) => set(() => ({
     books: filteredArr,
   }))
@@ -50,4 +53,3 @@ const bookStore = create((set) => ({
   //},
 }));
 
-export default bookStore;

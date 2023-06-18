@@ -6,12 +6,14 @@ import {
       Space } from '@mantine/core';
 import { useForm } from '@mantine/form';
 // eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
-import bookStore from '/src/store/store.js';
+import { bookStore } from '/src/store/store.js';
 
-export default function BookList() {
+export function FormField() {
+  //create variable from store
   const addBook = bookStore(
     (state) => state.addBook,
   );
+  //initializes form data
   const form = useForm({
     initialValues: {
       title: '',
