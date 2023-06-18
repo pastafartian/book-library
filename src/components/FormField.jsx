@@ -9,9 +9,11 @@ import { useForm } from '@mantine/form';
 import bookStore from '/src/store/store.js';
 
 export default function BookList() {
+  //create variable from store
   const addBook = bookStore(
     (state) => state.addBook,
   );
+  //initializes form data
   const form = useForm({
     initialValues: {
       title: '',
