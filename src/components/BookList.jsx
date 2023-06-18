@@ -1,15 +1,17 @@
-import React from 'react';
-import { Table } from '@mantine/core';
-import { Trash } from 'tabler-icons-react';
-// eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
-import { bookStore } from '/src/store/store.js';
+import React from "react";
+import { Table } from "@mantine/core";
+import { Trash } from "tabler-icons-react";
+import { bookStore } from "/src/store/store.js";
 
 export function BookList() {
   //create variables from store
-  const [books, removeEntry] = bookStore((state) => [state.books, state.removeEntry]);
+  const [books, removeEntry] = bookStore((state) => [
+    state.books,
+    state.removeEntry,
+  ]);
 
   //function to handle row deletion
-  const handleDelete = index => {
+  const handleDelete = (index) => {
     removeEntry(books.filter((_, i) => i !== index));
   };
   //map each book in array to a row
