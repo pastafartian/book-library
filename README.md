@@ -1,1 +1,1 @@
-# Book library built with React, Zustand, MongoDB, and  Node.js
+# Book library built with React and Zustand
